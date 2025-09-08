@@ -13,7 +13,6 @@ export const SITE_CONFIG: SiteConfig = {
     { text: "About", href: "#about" },
   ],
   socialLinks: [
-    { text: "Twitter", href: "https://github.com/immois/astro-zen" },
     { text: "LinkedIn", href: "https://www.linkedin.com/in/ryan-dudley-08753b24b/" },
     { text: "Github", href: "https://github.com/rpdudley" },
     { text: "Youtube", href: "https://www.youtube.com/@Ocedition" },
