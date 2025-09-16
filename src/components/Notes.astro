@@ -2,18 +2,17 @@
 // Notes component with simple sidebar navigation
 const { showNotes } = Astro.props;
 
-// Simple topics list
+// Topics with display names and IDs
 const topics = [
-    'Introduction',
-    'Web Development',
-    'JavaScript',
-    'Python',
-    'Databases',
-    'Algorithms',
-    'Career Tips',
-    'Dev Tools'
+    { id: 'introduction', name: 'Introduction' },
+    { id: 'web-development', name: 'Web Development' },
+    { id: 'javascript', name: 'JavaScript' },
+    { id: 'python', name: 'Python' },
+    { id: 'databases', name: 'Databases' },
+    { id: 'algorithms', name: 'Algorithms' },
+    { id: 'career-tips', name: 'Career Tips' },
+    { id: 'dev-tools', name: 'Dev Tools' }
 ];
-
 
 ---
 
@@ -47,62 +46,17 @@ const topics = [
         <h2 class="text-sm mt-2 font-medium text-white px-3 py-2 mb-6">Topics</h2>
         <nav>
           <ul class="space-y-2">
-            <li>
-              <button @click="selectedTopic = 'introduction'" 
-                      :class="selectedTopic === 'introduction' ? 'bg-blue-600 text-white' : 'text-neutral hover:text-white hover:bg-gray-900'"
-                      class="w-full text-left block px-3 py-2 rounded-md transition-all duration-200">
-                Introduction
-              </button>
-            </li>
-            <li>
-              <button @click="selectedTopic = 'web-development'" 
-                      :class="selectedTopic === 'web-development' ? 'bg-blue-600 text-white' : 'text-neutral hover:text-white hover:bg-gray-900'"
-                      class="w-full text-left block px-3 py-2 rounded-md transition-all duration-200">
-                Web Development
-              </button>
-            </li>
-            <li>
-              <button @click="selectedTopic = 'javascript'" 
-                      :class="selectedTopic === 'javascript' ? 'bg-blue-600 text-white' : 'text-neutral hover:text-white hover:bg-gray-900'"
-                      class="w-full text-left block px-3 py-2 rounded-md transition-all duration-200">
-                JavaScript
-              </button>
-            </li>
-            <li>
-              <button @click="selectedTopic = 'python'" 
-                      :class="selectedTopic === 'python' ? 'bg-blue-600 text-white' : 'text-neutral hover:text-white hover:bg-gray-900'"
-                      class="w-full text-left block px-3 py-2 rounded-md transition-all duration-200">
-                Python
-              </button>
-            </li>
-            <li>
-              <button @click="selectedTopic = 'databases'" 
-                      :class="selectedTopic === 'databases' ? 'bg-blue-600 text-white' : 'text-neutral hover:text-white hover:bg-gray-900'"
-                      class="w-full text-left block px-3 py-2 rounded-md transition-all duration-200">
-                Databases
-              </button>
-            </li>
-            <li>
-              <button @click="selectedTopic = 'algorithms'" 
-                      :class="selectedTopic === 'algorithms' ? 'bg-blue-600 text-white' : 'text-neutral hover:text-white hover:bg-gray-900'"
-                      class="w-full text-left block px-3 py-2 rounded-md transition-all duration-200">
-                Algorithms
-              </button>
-            </li>
-            <li>
-              <button @click="selectedTopic = 'career-tips'" 
-                      :class="selectedTopic === 'career-tips' ? 'bg-blue-600 text-white' : 'text-neutral hover:text-white hover:bg-gray-900'"
-                      class="w-full text-left block px-3 py-2 rounded-md transition-all duration-200">
-                Career Tips
-              </button>
-            </li>
-            <li>
-              <button @click="selectedTopic = 'dev-tools'" 
-                      :class="selectedTopic === 'dev-tools' ? 'bg-blue-600 text-white' : 'text-neutral hover:text-white hover:bg-gray-900'"
-                      class="w-full text-left block px-3 py-2 rounded-md transition-all duration-200">
-                Dev Tools
-              </button>
-            </li>
+            {topics.map(topic => (
+              <li>
+                <button 
+                  x-on:click={`selectedTopic = '${topic.id}'`}
+                  x-bind:class={`selectedTopic === '${topic.id}' ? 'bg-blue-600 text-white' : 'text-neutral hover:text-white hover:bg-gray-900'`}
+                  class="w-full text-left block px-3 py-2 rounded-md transition-all duration-200"
+                >
+                  {topic.name}
+                </button>
+              </li>
+            ))}
           </ul>
         </nav>
       </div>
@@ -129,10 +83,10 @@ const topics = [
         <div x-show="selectedTopic === 'introduction'" class="max-w-4xl">
           <h1 class="text-4xl font-bold mb-6 text-white">Introduction</h1>
           <div class="prose prose-lg text-gray-300">
-            <p class="mb-6">Welcome to my notes for my website!<p/> 
+            <p class="mb-6">Welcome to my notes for my website!</p>
             <p class="leading-relaxed mb-6">
               I have created this section of my website to record my thoughts and ideas as well as things I have learned throughout my years that I do not want to forget. 
-              Someone may ask why put this on a website? The reason is to make it accessible from anywhere, think of it as a jorunal.
+              Someone may ask why put this on a website? The reason is to make it accessible from anywhere, think of it as a journal.
 
             </p>
           </div>
