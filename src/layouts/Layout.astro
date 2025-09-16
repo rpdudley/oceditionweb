@@ -102,9 +102,8 @@ const ogImgUrl = canonicalURL + socialImage;
               <h1 class="text-white text-lg font-medium">Notes</h1>
             </div>
           </header>
-          <main class="mx-auto max-w-3xl px-5">
-            <Notes showNotes={true} />
-          </main>
+          <!-- Remove the main wrapper to let Notes handle its own layout -->
+          <Notes showNotes={true} />
         </div>
       </div>
     </div>
