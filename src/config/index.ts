@@ -17,7 +17,7 @@ export const SITE_CONFIG: SiteConfig = {
     { text: "Github", href: "https://github.com/rpdudley" },
     { text: "Youtube", href: "https://www.youtube.com/@Ocedition" },
   ],
-  socialImage: "/zen-og.png",
+  socialImage: "/preview.png",
   canonicalURL: "https://astro-zen.vercel.app",
 };
 
