@@ -1,0 +1,44 @@
+---
+// Notes component with simple sidebar navigation
+const { showNotes } = Astro.props;
+
+// Simple topics list
+const topics = [
+    'Introduction',
+    'Web Development',
+    'JavaScript',
+    'React',
+    'Node.js',
+    'Databases',
+    'Algorithms',
+    'Career Tips',
+    'Dev Tools'
+];
+---
+
+<div class="h-full w-full flex gap-4 text-white">
+  <!-- Simple Sidebar -->
+  <div class="w-60 bg-black border-r border-gray-800 px-5 py-6 mt-16">
+    <h2 class="text-lg font-medium text-white mb-6">Topics</h2>
+    <nav>
+      <ul class="space-y-2">
+        {topics.map(topic => (
+          <li>
+            <a href="#" class="block px-3 py-2 text-neutral hover:text-white hover:bg-gray-900 rounded-md transition-all duration-200">
+              {topic}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Main Content Area -->
+  <div class="flex-1 gap-40 px-5 py-8">
+    <div class="text-center text-neutral mt-20">
+      <h1 class="text-4xl font-bold mb-4 text-white">Select a Topic</h1>
+      <p class="text-lg">topic</p>
+      <p class="text-sm mt-2">content</p>
+    </div>
+  </div>
+</div>

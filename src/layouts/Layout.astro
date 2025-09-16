@@ -4,6 +4,7 @@ import "@fontsource/be-vietnam-pro";
 import "@fontsource-variable/gabarito";
 import { SITE_CONFIG } from "@config";
 import Footer from "@components/Footer.astro";
+import Notes from "@components/Notes.astro";
 import '@fontsource/fira-code';
 
 const {
@@ -46,13 +47,66 @@ const ogImgUrl = canonicalURL + socialImage;
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Alpine.js -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    
+    <style>
+      .page-transition {
+        transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
+      .slide-left {
+        transform: translateX(-100%);
+      }
+      .notes-panel {
+        transform: translateX(100%);
+        transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
+      .notes-panel.show {
+        transform: translateX(0);
+      }
+    </style>
 
   </head>
-  <body class="bg-black font-sans">
-    <Header siteLogo={siteLogo} navLinks={navLinks} />
-    <main class="mx-auto max-w-3xl px-5">
-      <slot />
-    </main>
-    <Footer author={author} socialLinks={socialLinks} />
+  <body class="bg-black font-sans overflow-hidden">
+    <div x-data="{ showNotes: false }" @show-notes.window="showNotes = true" class="relative h-screen w-full">
+      <!-- Main Content -->
+      <div 
+        class="page-transition absolute inset-0 bg-black"
+        :class="{ 'slide-left': showNotes }"
+      >
+        <div class="h-full overflow-y-auto">
+          <Header siteLogo={siteLogo} navLinks={navLinks} />
+          <main class="mx-auto max-w-3xl px-5">
+            <slot />
+          </main>
+          <Footer author={author} socialLinks={socialLinks} />
+        </div>
+      </div>
+
+      <!-- Notes Section -->
+      <div 
+        class="notes-panel absolute inset-0 bg-black z-40"
+        :class="{ 'show': showNotes }"
+      >
+        <div class="h-full overflow-y-auto">
+          <!-- Notes Header with same styling as main header -->
+          <header class="sticky top-0 z-50 mx-auto flex max-w-5xl animate-slide-in justify-between bg-black px-5 py-6">
+            <div class="flex items-center gap-4">
+              <button
+                @click="showNotes = false"
+                class="text-neutral hover:text-white transition-colors text-sm font-medium"
+              >
+                ← Back
+              </button>
+              <h1 class="text-white text-lg font-medium">Notes</h1>
+            </div>
+          </header>
+          <main class="mx-auto max-w-3xl px-5">
+            <Notes showNotes={true} />
+          </main>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
