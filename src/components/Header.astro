@@ -39,12 +39,22 @@ const { siteLogo, navLinks } = Astro.props;
       {
         navLinks.map((link) => (
           <li class="relative">
-            <a
-              class={`nav-item relative block p-2 text-sm font-medium transition-all duration-500 after:absolute after:bottom-0 after:left-2/4 after:h-2 after:w-1 after:-translate-x-2/4 after:text-primary after:opacity-0 after:content-['•'] hover:text-white`}
-              href={link.href}
-            >
-              {link.text}
-            </a>
+            {link.text === "Notes" ? (
+              <button
+                class={`nav-item relative block p-2 text-sm font-medium transition-all duration-500 after:absolute after:bottom-0 after:left-2/4 after:h-2 after:w-1 after:-translate-x-2/4 after:text-primary after:opacity-0 after:content-['•'] hover:text-white`}
+                x-data
+                @click="$dispatch('show-notes')"
+              >
+                {link.text}
+              </button>
+            ) : (
+              <a
+                class={`nav-item relative block p-2 text-sm font-medium transition-all duration-500 after:absolute after:bottom-0 after:left-2/4 after:h-2 after:w-1 after:-translate-x-2/4 after:text-primary after:opacity-0 after:content-['•'] hover:text-white`}
+                href={link.href}
+              >
+                {link.text}
+              </a>
+            )}
           </li>
         ))
       }

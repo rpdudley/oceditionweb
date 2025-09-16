@@ -11,6 +11,7 @@ export const SITE_CONFIG: SiteConfig = {
     { text: "Experience", href: "#experience" },
     { text: "Projects", href: "#projects" },
     { text: "About", href: "#about" },
+    { text: "Notes", href: "#notes" },
   ],
   socialLinks: [
     { text: "LinkedIn", href: "https://www.linkedin.com/in/ryan-dudley-08753b24b/" },
