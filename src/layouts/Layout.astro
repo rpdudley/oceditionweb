@@ -16,10 +16,12 @@ const {
   author,
   socialLinks,
   socialImage,
-  canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
+  canonicalURL,
 } = SITE_CONFIG;
 
-const ogImgUrl = canonicalURL + socialImage;
+const ogImgUrl = canonicalURL
+  ? new URL(socialImage, canonicalURL).href
+  : socialImage;
 ---
 
 <!doctype html>
@@ -30,7 +32,6 @@ const ogImgUrl = canonicalURL + socialImage;
     <meta name="author" content={author} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
 
     <meta property="og:title" content={title} />
@@ -49,7 +50,7 @@ const ogImgUrl = canonicalURL + socialImage;
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
     
     <!-- Alpine.js -->
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.10/dist/cdn.min.js" defer></script>
+    <script is:inline src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.8/dist/cdn.min.js" defer></script>
     
     <style>
       .page-transition {

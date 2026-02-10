@@ -6,7 +6,7 @@ interface Props {
   experience: ExperienceProps[];
 }
 
-const { experience } = Astro.props;
+const { experience } = Astro.props as Props;
 ---
 
 <Section text="Work Experience" href="experience">
@@ -20,7 +20,7 @@ const { experience } = Astro.props;
           <h4 class="mb-0.5 font-serif text-2xl font-medium text-primary">
             {position}
           </h4>
-          <span class="pb-[2px] text-sm text-white/70">
+          <span class="pb-[2px] text-sm text-amber-200">
             {startDate} — {endDate}
           </span>
         </div>
