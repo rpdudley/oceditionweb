@@ -88,7 +88,7 @@ export const SITE_CONTENT: SiteContent = {
       linkSource: "",
     },
     {
-      name:"Pointer anayslsis",
+      name:"Pointer Analysis in C",
       summary: "A research paper analyzing the use of pointers in C and C++, including their advantages, disadvantages, and best practices for safe usage.",
       date: "Fall 2024",
       linkPreview: "/",
