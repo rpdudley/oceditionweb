@@ -1,11 +1,8 @@
 ---
 import Header from "@components/Header.astro";
-import "@fontsource/be-vietnam-pro";
-import "@fontsource-variable/gabarito";
 import { SITE_CONFIG } from "@config";
 import Footer from "@components/Footer.astro";
 import Notes from "@components/Notes.astro";
-import '@fontsource/fira-code';
 
 const {
   title,
@@ -45,10 +42,6 @@ const ogImgUrl = canonicalURL
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImgUrl} />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
-    
     <!-- Alpine.js -->
     <script is:inline src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.8/dist/cdn.min.js" defer></script>
     
