@@ -4,8 +4,9 @@
 
 @layer base {
   :root {
-    --font-sans: "Be Vietnam Pro", system-ui, sans-serif;
-    --font-serif: "Gabarito Variable", ui-serif, serif;
+    --font-sans: var(--font-be-vietnam-pro);
+    --font-serif: var(--font-gabarito);
+    --font-mono: var(--font-fira-code);
 
     --color-primary: #2563eb;
     --color-neutral: #94a3b8;
