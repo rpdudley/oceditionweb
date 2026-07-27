@@ -1,5 +1,5 @@
 ---
-import { FOOTER_LINKS, BRAND_NAME, BRAND_LOGO_IMAGE, SITE_DESCRIPTION, SOCIAL_LINKS } from '../config';
+import { FOOTER_LINKS, BRAND_NAME, BRAND_LOGO_TEXT, SITE_DESCRIPTION, SOCIAL_LINKS } from '../config';
 import { resolvePath } from '../utils/navigation';
 ---
 
@@ -8,8 +8,8 @@ import { resolvePath } from '../utils/navigation';
     <div class="mb-12 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-[minmax(280px,1.35fr)_repeat(3,minmax(140px,1fr))] lg:gap-10">
       <div>
         <a href={resolvePath('/')} class="flex items-center gap-2 mb-4">
-          <div class="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-primary-600">
-            <img src={BRAND_LOGO_IMAGE} alt={`${BRAND_NAME} logo`} class="h-full w-full object-cover" loading="lazy" decoding="async" />
+          <div class="flex h-9 w-9 items-center justify-center rounded-full bg-primary-600">
+            <span class="text-white font-bold text-xl leading-none">{BRAND_LOGO_TEXT}</span>
           </div>
           <span class="font-heading font-bold text-xl text-white">{BRAND_NAME}</span>
         </a>
@@ -42,7 +42,7 @@ import { resolvePath } from '../utils/navigation';
 
     <div class="flex flex-col items-center justify-between gap-4 border-t border-slate-700/70 pt-8 md:flex-row">
       <p class="text-sm text-slate-500">
-        &copy; {new Date().getFullYear()} {BRAND_NAME}. All rights reserved. Built by Ryan Dudley.
+        &copy; {new Date().getFullYear()} {BRAND_NAME}. All rights reserved. Built by <a href="https://farrosfr.com" class="transition-colors hover:text-primary-400" target="_blank" rel="noopener noreferrer">Farros FR</a>.
       </p>
       
       <div class="flex gap-4 text-slate-500">

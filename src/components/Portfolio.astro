@@ -1,0 +1,70 @@
+---
+import { PORTFOLIO } from '../portfolio';
+---
+
+<section id="experience" class="border-t border-slate-700/70 py-24 md:py-32">
+  <div class="mx-auto max-w-5xl px-5">
+    <div class="mb-16 max-w-3xl reveal-on-scroll">
+      <p class="mb-4 text-sm font-medium text-primary-400">Experience</p>
+      <h2 class="mb-6 font-heading text-4xl font-bold text-white md:text-5xl">Work experience</h2>
+      <p class="text-lg leading-8 text-slate-400">Professional work focused on software delivery, reliability, and user-facing products.</p>
+    </div>
+
+    <div class="border-y border-slate-700/70">
+      {PORTFOLIO.experience.map((role) => (
+        <article class="grid gap-8 border-b border-slate-700/70 py-10 last:border-b-0 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] reveal-on-scroll">
+          <div>
+            <h3 class="font-heading text-2xl font-bold text-white">{role.company}</h3>
+            <p class="mt-2 text-primary-400">{role.position}</p>
+            <p class="mt-3 text-sm text-slate-500">{role.startDate} - {role.endDate}</p>
+          </div>
+          <ul class="space-y-4 text-slate-400">
+            {role.highlights.map((highlight) => (
+              <li class="flex gap-3 leading-7"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary-400"></span>{highlight}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="border-t border-slate-700/70 py-24 md:py-32">
+  <div class="mx-auto max-w-5xl px-5">
+    <div class="mb-16 max-w-3xl reveal-on-scroll">
+      <p class="mb-4 text-sm font-medium text-primary-400">Projects</p>
+      <h2 class="mb-6 font-heading text-4xl font-bold text-white md:text-5xl">Selected work</h2>
+      <p class="text-lg leading-8 text-slate-400">Personal products, coursework, research, and experiments across software engineering.</p>
+    </div>
+
+    <div class="grid gap-px overflow-hidden border border-slate-700/70 bg-slate-700/70 md:grid-cols-2">
+      {PORTFOLIO.projects.map((project) => (
+        <article class="flex min-h-72 flex-col bg-[#0e141b] p-8 reveal-on-scroll">
+          <p class="mb-6 text-sm font-medium text-primary-400">{project.date}</p>
+          <h3 class="mb-4 font-heading text-2xl font-bold text-white">{project.name}</h3>
+          <p class="flex-grow leading-7 text-slate-400">{project.summary}</p>
+          <div class="mt-8 flex flex-wrap gap-5 border-t border-slate-700/70 pt-5 text-sm font-medium">
+            {project.sourceUrl && <a href={project.sourceUrl} target="_blank" rel="noopener noreferrer" class="text-primary-400 transition-colors hover:text-primary-300">Source</a>}
+            {project.previewUrl && <a href={project.previewUrl} class="text-slate-300 transition-colors hover:text-white">Preview</a>}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section id="about" class="border-t border-slate-700/70 py-24 md:py-32">
+  <div class="mx-auto grid max-w-5xl items-center gap-12 px-5 md:grid-cols-[minmax(0,1.2fr)_minmax(220px,0.8fr)]">
+    <div class="reveal-on-scroll">
+      <p class="mb-4 text-sm font-medium text-primary-400">About</p>
+      <h2 class="mb-6 font-heading text-4xl font-bold text-white md:text-5xl">About Ryan</h2>
+      <p class="text-lg leading-8 text-slate-400">{PORTFOLIO.about}</p>
+      <div class="mt-8 flex flex-wrap gap-5 text-sm font-medium">
+        {PORTFOLIO.socialLinks.map((link) => (
+          <a href={link.href} target="_blank" rel="noopener noreferrer" class="text-primary-400 transition-colors hover:text-primary-300">{link.label}</a>
+        ))}
+      </div>
+    </div>
+    <img src={PORTFOLIO.image} alt={PORTFOLIO.name} class="aspect-[4/5] w-full object-cover reveal-on-scroll" loading="lazy" />
+  </div>
+</section>

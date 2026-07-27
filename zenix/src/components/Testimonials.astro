@@ -1,0 +1,60 @@
+---
+import { Image } from 'astro:assets';
+
+const testimonials = [
+  {
+    quote: "Zenix saved me weeks of development time. I was able to focus entirely on my product's core features instead of tweaking landing page CSS.",
+    author: "David Morgan",
+    role: "Founder, DataFlow",
+    avatar: "https://i.pravatar.cc/150?u=david"
+  },
+  {
+    quote: "The cleanest Astro theme I've used. The code is structured beautifully, and the Lighthouse scores are genuinely 100 straight out of the box.",
+    author: "Marcus Chen",
+    role: "Indie Hacker",
+    avatar: "https://i.pravatar.cc/150?u=marcus"
+  },
+  {
+    quote: "Converted my old React landing page to Zenix in a day. The bundle size dropped by 90% and my conversion rate went up by 15%. Highly recommend.",
+    author: "Elena Rodriguez",
+    role: "CEO, Streamline",
+    avatar: "https://i.pravatar.cc/150?u=elena"
+  }
+];
+---
+
+<section id="testimonials" class="border-t border-slate-700/70 py-24 md:py-32">
+  <div class="mx-auto max-w-5xl px-5">
+    <div class="mb-16 max-w-3xl reveal-on-scroll">
+      <p class="mb-4 text-sm font-medium text-primary-400">Testimonials</p>
+      <h2 class="mb-6 font-heading text-4xl font-bold text-white md:text-5xl">Loved by Founders</h2>
+      <p class="text-lg leading-8 text-slate-400">
+        Don't just take our word for it. See what others are building with Zenix.
+      </p>
+    </div>
+
+    <div class="grid gap-px overflow-hidden border border-slate-700/70 bg-slate-700/70 md:grid-cols-3">
+      {testimonials.map((t, index) => (
+        <article class="flex min-h-80 flex-col bg-[#0e141b] p-8 reveal-on-scroll" style={`transition-delay: ${index * 75}ms;`}>
+          <div class="mb-8 flex gap-1 text-primary-400">
+            {[1, 2, 3, 4, 5].map(() => (
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            ))}
+          </div>
+
+          <blockquote class="mb-8 flex-grow text-lg leading-8 text-slate-300">
+            "{t.quote}"
+          </blockquote>
+
+          <div class="flex items-center gap-4 border-t border-slate-700/70 pt-6">
+            <Image src={t.avatar} alt={`Portrait of ${t.author}`} width={48} height={48} class="h-12 w-12 rounded-full border border-slate-600 object-cover" loading="lazy" />
+            <div>
+              <div class="font-bold text-white">{t.author}</div>
+              <div class="text-sm text-slate-500">{t.role}</div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
