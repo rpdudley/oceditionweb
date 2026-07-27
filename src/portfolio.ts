@@ -1,0 +1,87 @@
+export const PORTFOLIO = {
+  name: "Ryan Dudley",
+  role: "Student Software Developer",
+  summary:
+    "Developer based in Michigan, USA. Working on Master's degree in Computer Science at Oakland University.",
+  email: "oceditionbuisness@gmail.com",
+  socialLinks: [
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/ryan-dudley-08753b24b/" },
+    { label: "GitHub", href: "https://github.com/rpdudley" },
+    { label: "YouTube", href: "https://www.youtube.com/@Ocedition" },
+  ],
+  experience: [
+    {
+      company: "New Wave Software",
+      position: "Software Engineer Internship",
+      startDate: "August 2023",
+      endDate: "March 2024",
+      highlights: [
+        "Upgraded 8 .NET APIs to the latest framework, improving performance and security.",
+        "Developed and maintained 3 client websites, implementing new features and optimizing UX.",
+        "Migrated a TypeScript API to .NET, improving system compatibility and efficiency.",
+        "Implemented unit tests using xUnit and Moq, increasing API reliability.",
+      ],
+    },
+  ],
+  projects: [
+    {
+      name: "Ocedtionapi",
+      summary:
+        "Monitors at least 20 stocks. Sends notifications to users when a stock reaches a certain price or percentage change. Built with .NET and C#. Includes additional features like a database and runs on a virtual machine. The database runs on Debian 13 in my home network.",
+      date: "2024 - Present",
+      previewUrl: "/",
+      sourceUrl: "https://github.com/rpdudley/OcStockAPI",
+    },
+    {
+      name: "Ocedition Website",
+      summary:
+        "A personal portfolio website built with Astro, showcasing projects and experience as well as some notes. Future enchancemnet would be getting some API calls working on it.",
+      date: "2025 - Present",
+      previewUrl: "/",
+      sourceUrl: "https://ocedtion.com",
+    },
+    {
+      name: "Survey of the Integration of AI in Military Applications",
+      summary:
+        "A research paper exploring the current and potential applications of artificial intelligence in military contexts, including ethical considerations and future implications.",
+      date: "Fall 2025",
+      previewUrl: "/",
+      sourceUrl: "",
+    },
+    {
+      name: "Enhanced Encryption Algorithm",
+      summary:
+        "Encrypts a message with an enhanced encryption algorithm using 8 different ciphers.",
+      date: "Fall 2025",
+      previewUrl: "/",
+      sourceUrl: "https://github.com/rpdudley/ProjectCode",
+    },
+    {
+      name: "Iceberg Odyssey Game using pygame",
+      summary:
+        "A game where you play as an iceberg and try to avoid getting hit by boats and other objects. The game gets faster and more difficult as you progress.",
+      date: "Winter 2025",
+      previewUrl: "/",
+      sourceUrl: "https://github.com/rpdudley/iceberg_game",
+    },
+    {
+      name: "Anaylsis of three different unit testing frameworks for C#",
+      summary:
+        "A research paper comparing the features, performance, and usability of three popular unit testing frameworks for C#: NUnit, xUnit, and MSTest.",
+      date: "Winter 2025",
+      previewUrl: "/",
+      sourceUrl: "",
+    },
+    {
+      name: "Pointer Analysis in C",
+      summary:
+        "A research paper analyzing the use of pointers in C and C++, including their advantages, disadvantages, and best practices for safe usage.",
+      date: "Fall 2024",
+      previewUrl: "/",
+      sourceUrl: "",
+    },
+  ],
+  about:
+    "My name is Ryan, I am a student softtware developer working on Master's degree in Computer Science at Oakland University. I have a passion for learning new technologies and building things that people use. I am currently working as a freelance developer and looking for new opportunities.",
+  image: "/IMG_3121.png",
+} as const;

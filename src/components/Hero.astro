@@ -1,27 +1,59 @@
 ---
-import type { HeroProps } from "@types";
-type Props = HeroProps;
+import Button from './Button.astro';
+import Badge from './Badge.astro';
+import { resolvePath } from '../utils/navigation';
+import { PORTFOLIO } from '../portfolio';
 
-const { name, specialty, summary, email } = Astro.props;
+const projectCount = PORTFOLIO.projects.length;
 ---
 
-<section class="py-24 md:py-32" id="#hero">
-  <h1
-    class="mb-1.5 font-serif text-7xl font-bold tracking-tightest text-white sm:text-8xl md:mb-0 md:text-9xl"
-  >
-    {name}
-  </h1>
-  <p
-    class="mb-9 font-serif text-4xl leading-[46px] font-bold tracking-tighter text-primary sm:text-5xl md:text-6xl"
-  >
-    {specialty}
-  </p>
-  <p class="mb-16 text-base font-normal text-neutral md:text-lg">
-    {summary}
-  </p>
+<section class="relative pt-32 pb-32 lg:pt-48 lg:pb-40 overflow-hidden">
+  <div class="mx-auto max-w-3xl px-5 reveal-on-scroll">
+    <Badge variant="primary" class="mb-8 border-primary-700 bg-primary-950/40 text-primary-300">
+      Portfolio
+    </Badge>
 
-  <a
-    class="inline-block rounded-full bg-primary px-8 py-5 text-sm leading-5 font-medium text-[#fff]"
-    href={`mailto:${email}`}>Get in Touch</a
-  >
+    <h1 class="mb-8 font-heading text-5xl font-bold leading-[1.05] text-white sm:text-6xl lg:text-7xl">
+      {PORTFOLIO.name}, <span class="text-gradient">{PORTFOLIO.role}.</span>
+    </h1>
+
+    <p class="mb-12 max-w-2xl text-lg leading-8 text-slate-400 sm:text-xl">
+      {PORTFOLIO.summary}
+    </p>
+
+    <div class="mb-20 flex flex-col gap-3 sm:flex-row">
+      <Button href={`mailto:${PORTFOLIO.email}`} variant="primary" size="lg" class="w-full sm:w-auto">
+        Get in Touch
+      </Button>
+      <Button href="#experience" variant="outline" size="lg" class="w-full sm:w-auto">
+        Explore Experience
+      </Button>
+    </div>
+
+    <div class="border-y border-slate-700/70 py-6" style="transition-delay: 150ms;">
+      <div class="mb-6 flex items-center justify-between text-xs font-medium uppercase tracking-[0.18em] text-slate-500">
+        <span>Portfolio Overview</span>
+        <span class="text-primary-400">Available for opportunities</span>
+      </div>
+      <div class="grid gap-px overflow-hidden border border-slate-700/70 bg-slate-700/70 sm:grid-cols-[1.4fr_1fr]">
+        <div class="bg-[#121b25] p-6">
+          <div class="mb-7 flex items-center gap-2">
+            <span class="h-2 w-2 rounded-full bg-primary-400"></span>
+            <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+            <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+          </div>
+          <div class="space-y-3">
+            <p class="text-sm font-medium text-slate-200">{PORTFOLIO.experience[0].company}</p>
+            <p class="text-xs text-slate-500">{PORTFOLIO.experience[0].position}</p>
+            <p class="text-xs text-slate-500">{PORTFOLIO.experience[0].startDate} - {PORTFOLIO.experience[0].endDate}</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-px bg-slate-700/70">
+          <div class="bg-primary-950/70 p-6"><span class="block text-2xl font-bold text-primary-300">{projectCount}</span><span class="mt-2 block text-xs text-slate-500">Projects</span></div>
+          <div class="bg-[#121b25] p-6"><span class="block text-2xl font-bold text-slate-200">M.S.</span><span class="mt-2 block text-xs text-slate-500">Computer Science</span></div>
+          <div class="col-span-2 bg-[#121b25] p-6 font-mono text-xs text-primary-300">{PORTFOLIO.email}</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

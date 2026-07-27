@@ -1,51 +1,95 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+
+  --color-accent-50: #f8fafc;
+  --color-accent-100: #f1f5f9;
+  --color-accent-200: #e2e8f0;
+  --color-accent-300: #cbd5e1;
+  --color-accent-400: #94a3b8;
+  --color-accent-500: #64748b;
+  --color-accent-600: #475569;
+  --color-accent-700: #334155;
+  --color-accent-800: #1e293b;
+  --color-accent-900: #0f172a;
+
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Space Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Custom base layer for Dark Mode support and smooth transitions */
 @layer base {
   :root {
-    --font-sans: var(--font-be-vietnam-pro, "Be Vietnam Pro", system-ui, sans-serif);
-    --font-serif: var(--font-gabarito, "Gabarito Variable", ui-serif, serif);
-    --font-mono: var(--font-fira-code, "Fira Code", ui-monospace, monospace);
+    --bg-color: #0e141b;
+    --text-color: #e2e8f0;
+    --border-color: rgb(148 163 184 / 20%);
+    --header-offset: 6.5rem;
+  }
 
-    --color-primary: #2563eb;
-    --color-neutral: #94a3b8;
-    --color-white: #e2e8f0;
-    --color-black: #0e141b;
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-offset);
+  }
 
-    /* Move tracking variables inside :root */
-    --tracking-tightest: -2px;
-    --tracking-tighter: -1px;
-    --tracking-tight: -0.25px;
+  section[id] {
+    scroll-margin-top: var(--header-offset);
+  }
+
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: 0;
   }
 }
 
+/* Utility layer for custom complex visual effects */
 @layer utilities {
-  /* Your text utilities */
-  .text-xs { font-size: 0.875rem; line-height: 1.125rem; }
-  .text-sm { font-size: 1rem; line-height: 1.25rem; }
-  .text-base { font-size: 1.125rem; line-height: 1.625rem; }
-  .text-lg { font-size: 1.25rem; line-height: 1.75rem; }
-  .text-xl { font-size: 1.5rem; line-height: 1.813rem; }
-  .text-2xl { font-size: 1.75rem; line-height: 2.125rem; }
-  .text-3xl { font-size: 2rem; line-height: 2.375rem; }
-  .text-4xl { font-size: 2.25rem; line-height: 2.688rem; }
-  .text-5xl { font-size: 2.5rem; line-height: 3rem; }
-  .text-6xl { font-size: 3rem; line-height: 3.625rem; }
-  .text-7xl { font-size: 3.75rem; line-height: 1; }
-  .text-8xl { font-size: 4.5rem; line-height: 4.875rem; }
-  .text-9xl { font-size: 6rem; line-height: 6.625rem; }
-}
-
-@keyframes slide-in {
-  10% {
-    transform: translateY(-100%);
+  .glass-panel {
+    @apply bg-transparent border border-slate-700/70;
   }
-  100% {
-    transform: translateY(0);
+  
+  .text-gradient {
+    @apply text-primary-400;
+  }
+
+  .hover-glow {
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+  
+  .hover-glow:hover {
+    border-color: rgb(148 163 184 / 60%);
+    background-color: rgb(255 255 255 / 3%);
   }
 }
 
-code {
-  @apply font-mono;
+/* Base styles for scroll animation classes */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
 }

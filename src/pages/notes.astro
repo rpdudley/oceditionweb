@@ -1,0 +1,11 @@
+---
+import Notes from '../components/Notes.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Notes" description="Ryan Dudley's developer notes and references.">
+  <section class="min-h-[calc(100vh-5.5rem)] py-10 md:py-16">
+    <Notes />
+  </section>
+  <script is:inline src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.8/dist/cdn.min.js" defer></script>
+</BaseLayout>
