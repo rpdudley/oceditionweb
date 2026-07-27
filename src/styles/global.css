@@ -35,10 +35,16 @@
     --bg-color: #0e141b;
     --text-color: #e2e8f0;
     --border-color: rgb(148 163 184 / 20%);
+    --header-offset: 6.5rem;
   }
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: var(--header-offset);
+  }
+
+  section[id] {
+    scroll-margin-top: var(--header-offset);
   }
 
   body {

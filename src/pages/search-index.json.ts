@@ -8,7 +8,7 @@ export async function GET() {
     ...blog.map(post => ({
       title: post.data.title,
       description: post.data.description,
-      slug: `/blog/${post.id}`,
+      slug: `/blog/${post.id}/`,
       type: 'Blog Post'
     })),
     ...changelog.map(entry => ({

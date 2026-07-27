@@ -4,7 +4,7 @@ import { NAV_LINKS, BRAND_NAME, BRAND_LOGO_IMAGE } from '../config';
 import { resolvePath } from '../utils/navigation';
 ---
 
-<header class="sticky top-0 z-[90] w-full transition-colors duration-300 glass-panel border-x-0 border-t-0 rounded-none shadow-sm pointer-events-auto">
+<header id="site-header" class="sticky top-0 z-[90] w-full border-x-0 border-t-0 border-b border-slate-700/70 bg-[#0e141b]/90 backdrop-blur-md transition-colors duration-300 rounded-none shadow-sm pointer-events-auto">
   <div class="mx-auto flex max-w-5xl items-center justify-between px-5 py-6">
     <a href={resolvePath('/')} class="flex items-center gap-3" aria-label={`${BRAND_NAME} home`}>
       <span class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-primary-600">

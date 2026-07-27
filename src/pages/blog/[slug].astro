@@ -153,7 +153,7 @@ const mdxComponents = {
           <h3 class="text-2xl font-heading font-bold text-slate-900 dark:text-white mb-8">Related Articles</h3>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             {relatedPosts.map(post => (
-              <a href={resolvePath(`/blog/${post.id}`)} class="group block">
+              <a href={resolvePath(`/blog/${post.id}/`)} class="group block">
                 <div class="p-6 rounded-2xl glass-panel hover-glow transition-all">
                   <time class="text-xs text-slate-500 mb-2 block">{post.data.pubDate.toLocaleDateString()}</time>
                   <h4 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary-600 transition-colors mb-2">{post.data.title}</h4>

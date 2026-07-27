@@ -27,7 +27,7 @@ export const PORTFOLIO = {
     {
       name: "Ocedtionapi",
       summary:
-        "Moniters at least 20 stocks. Sends notifications to users when a stock reaches a certain price or percentage change. Built with .NET and C#. Has more added features like a database and runs on virtual machine. The database runs on a debian 13 on in home network.",
+        "Monitors at least 20 stocks. Sends notifications to users when a stock reaches a certain price or percentage change. Built with .NET and C#. Includes additional features like a database and runs on a virtual machine. The database runs on Debian 13 in my home network.",
       date: "2024 - Present",
       previewUrl: "/",
       sourceUrl: "https://github.com/rpdudley/OcStockAPI",

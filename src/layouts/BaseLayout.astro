@@ -1,12 +1,12 @@
 ---
-// import '@fontsource-variable/inter';
-// import '@fontsource-variable/space-grotesk';
+import '@fontsource-variable/inter/index.css';
+import '@fontsource-variable/space-grotesk/index.css';
 import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import CommandPalette from '../components/CommandPalette.astro';
-import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from '../config';
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, SOCIAL_LINKS } from '../config';
 import { resolvePath } from '../utils/navigation';
 
 interface Props {
@@ -30,11 +30,14 @@ const {
 } = Astro.props;
 
 const siteURL = SITE_URL.endsWith('/') ? SITE_URL : `${SITE_URL}/`;
+const canonicalBase = Astro.site?.href ?? siteURL;
 const canonicalPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
-const canonicalURL = new URL(canonicalPath, siteURL).href;
+const canonicalURL = new URL(canonicalPath, canonicalBase).href;
 const imageURL = new URL(image, siteURL).href;
 const fullTitle = `${title} | ${SITE_TITLE}`;
 const robotsContent = 'index, follow';
+const twitterHandleMatch = SOCIAL_LINKS.twitter.match(/(?:twitter\.com|x\.com)\/([A-Za-z0-9_]+)/i);
+const twitterHandle = twitterHandleMatch ? `@${twitterHandleMatch[1]}` : undefined;
 const structuredData =
   type === 'article'
     ? {
@@ -96,7 +99,7 @@ const structuredData =
     )}
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@farrosfr_" />
+    {twitterHandle && <meta name="twitter:site" content={twitterHandle} />}
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={imageURL} />
@@ -118,24 +121,56 @@ const structuredData =
 
     <!-- Global Intersection Observer for Scroll Animations -->
     <script>
-      document.addEventListener('astro:page-load', () => {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-revealed');
-              // Optional: Stop observing once revealed
-              // observer.unobserve(entry.target);
-            }
-          });
-        }, {
-          root: null,
-          rootMargin: '0px',
-          threshold: 0.1
-        });
+      const w: any = window;
 
-        document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
+      function syncHeaderOffset() {
+        const header = document.getElementById('site-header');
+        if (!header) return;
+
+        const offset = Math.ceil(header.getBoundingClientRect().height) + 12;
+        document.documentElement.style.setProperty('--header-offset', `${offset}px`);
+      }
+
+      function setupRevealObserver() {
+        syncHeaderOffset();
+
+        const rawOffset = getComputedStyle(document.documentElement).getPropertyValue('--header-offset').trim();
+        const headerOffset = Number.parseInt(rawOffset, 10) || 100;
+
+        if (w.__revealObserver) {
+          w.__revealObserver.disconnect();
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-revealed');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            root: null,
+            rootMargin: `-${headerOffset}px 0px -5% 0px`,
+            threshold: 0.05,
+          },
+        );
+
+        w.__revealObserver = observer;
+
+        document.querySelectorAll('.reveal-on-scroll:not(.is-revealed)').forEach((el) => {
           observer.observe(el);
         });
+      }
+
+      if (!w.__headerOffsetResizeBound) {
+        w.__headerOffsetResizeBound = true;
+        window.addEventListener('resize', syncHeaderOffset, { passive: true });
+      }
+
+      document.addEventListener('astro:page-load', () => {
+        setupRevealObserver();
       });
     </script>
   </body>

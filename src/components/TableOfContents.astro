@@ -34,28 +34,30 @@ const toc = headings.filter((heading) => heading.depth > 1 && heading.depth < 4)
 
 <script>
   function setupTocHighlighting() {
+    const tocNav = document.querySelector('a[data-toc-link]')?.closest('nav');
+    if (!tocNav) return;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const id = entry.target.getAttribute('id');
           if (!id) return;
           
-          const link = document.querySelector(`nav a[href="#${id}"]`);
+          const link = tocNav.querySelector(`a[href="#${id}"]`);
           if (!link) return;
 
           if (entry.isIntersecting) {
-            // Remove active class from all links
-            document.querySelectorAll('nav a[data-toc-link]').forEach((a) => {
+            // Remove active class from all TOC links
+            tocNav.querySelectorAll('a[data-toc-link]').forEach((a) => {
               a.classList.remove('border-primary-500', 'text-primary-600', 'dark:text-primary-400');
               a.classList.add('border-transparent');
             });
-            // Add active class to current intersecting link
+            // Add active class to current intersecting TOC link
             link.classList.remove('border-transparent');
             link.classList.add('border-primary-500', 'text-primary-600', 'dark:text-primary-400');
           }
         });
       },
-      { rootMargin: '-10% 0px -80% 0px' } // Adjust margins so it triggers near the top
+      { rootMargin: '-10% 0px -80% 0px' },
     );
 
     // Observe all headings
