@@ -1,0 +1,66 @@
+---
+title: "Introducing Ryan Dudley"
+description: "A closer look at the blog structure, content system, and writing workflow behind Ryan Dudley's site."
+pubDate: 2026-05-18
+author: ryan-dudley
+tags: ["release", "astro", "architecture"]
+---
+
+# A Practical Blog for Notes and Technical Writing
+
+Building a useful personal site is mostly about making publishing simple. The goal here is a clean structure for posts, notes, and occasional project updates.
+
+This site is designed as a focused foundation for blog content: writing, notes, and common content patterns are included without adding much complexity.
+
+<Callout type="info" title="The Blog Philosophy">
+  Keep the site fast, readable, and easy to update. A blog should make writing feel lighter, not heavier.
+</Callout>
+
+## Architectural Decisions
+
+The implementation stays close to Astro's strengths: static output, content collections, MDX support, and small amounts of client-side JavaScript where interaction is needed.
+
+### 1. View Transitions API
+
+Astro's View Transitions give this static site the feeling of a Single Page Application (SPA). When you navigate between pages, there is no hard refresh. The browser paints the new DOM instantly.
+
+<Callout type="success" title="Zero Configuration">
+  View transitions are enabled by default here. You do not need to write extra JavaScript to get SPA-like routing.
+</Callout>
+
+### 2. The Dark Mode Engine
+
+The site uses a dedicated dark-mode color palette with Tailwind's `dark:` variants. Backgrounds, borders, and text colors are tuned independently for light and dark mode.
+
+```css
+/* Example of our utility layering */
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-slate-200/50 dark:border-slate-800/50 shadow-xl;
+  }
+}
+```
+
+### 3. The Writing Grid
+
+The layout uses a responsive grid that keeps the reading experience expressive on larger screens while staying simple on smaller devices.
+
+## MDX Integration
+
+This blog post is written in MDX, which means standard Markdown can live alongside Astro components.
+
+<Callout type="warning" title="Content Tip">
+  Keep reusable components simple and focused. They should make writing easier to publish and easier to maintain.
+</Callout>
+
+### Supported Components
+
+The site ships with a flexible `<Callout>` component. You can pass `type="info" | "warning" | "danger" | "success"` to change its appearance.
+
+<Callout type="danger" title="Customization Note">
+  Replace sample content, links, and metadata before publishing your own posts.
+</Callout>
+
+## Conclusion
+
+This site is meant to be a personal writing space. Use the structure, adjust the copy, and shape the details around your own posts and notes.
