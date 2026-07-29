@@ -1,14 +1,14 @@
 import { PORTFOLIO } from './portfolio';
 
 // Core metadata used for SEO tags and generated site feeds.
-export const SITE_TITLE = 'Ryan Dudley';
+export const SITE_TITLE = 'Ocedition';
 export const SITE_DESCRIPTION = `${PORTFOLIO.name}'s blog, notes, projects, and developer writing.`;
 export const SITE_URL = 'https://ocedition.com';
 export const REPOSITORY_URL = 'https://github.com/rpdudley';
 
 // Brand identity values reused by the navigation and footer.
-export const BRAND_NAME = 'Ryan Dudley';
-export const BRAND_LOGO_TEXT = 'R';
+export const BRAND_NAME = 'Ocedition';
+export const BRAND_LOGO_TEXT = 'O';
 export const BRAND_LOGO_IMAGE = '/channel.png';
 
 // Social account URLs used in footer/profile links.
