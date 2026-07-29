@@ -2,7 +2,7 @@ import { PORTFOLIO } from './portfolio';
 
 // Core metadata used for SEO tags and generated site feeds.
 export const SITE_TITLE = 'Ocedition';
-export const SITE_DESCRIPTION = `${PORTFOLIO.name}'s portfolio, projects, experience, and developer notes.`;
+export const SITE_DESCRIPTION = `${PORTFOLIO.name}'s blog, notes, projects, and developer writing.`;
 export const SITE_URL = 'https://ocedition.com';
 export const REPOSITORY_URL = 'https://github.com/rpdudley';
 

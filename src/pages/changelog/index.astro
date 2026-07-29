@@ -9,7 +9,7 @@ const entries = await getCollection('changelog');
 entries.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<BaseLayout title="Changelog" description="See what's new in Zenix.">
+<BaseLayout title="Changelog" description="See what's new on the site.">
   <div class="bg-slate-50 dark:bg-[#0c0c0f] border-b border-slate-200 dark:border-slate-800 py-16 md:py-24 transition-colors">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center">
       <h1 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">Changelog</h1>

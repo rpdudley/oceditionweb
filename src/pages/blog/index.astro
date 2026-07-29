@@ -15,7 +15,7 @@ posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 // Resolve authors for all posts
 const postsWithAuthors = await Promise.all(posts.map(async (post) => {
   const author = await getEntry(post.data.author);
-  const authorName = author?.data.name ?? 'Zenix Author';
+  const authorName = author?.data.name ?? 'Ryan Dudley';
   const authorInitials = authorName
     .split(/\s+/)
     .filter(Boolean)
@@ -28,12 +28,12 @@ const postsWithAuthors = await Promise.all(posts.map(async (post) => {
 }));
 ---
 
-<BaseLayout title="Blog" description="Latest updates, thoughts, and tutorials from the Zenix team.">
+<BaseLayout title="Ryan Dudley Blog" description="Notes, updates, and technical writing from Ryan Dudley.">
   <div class="bg-slate-50 dark:bg-[#0c0c0f] border-b border-slate-200 dark:border-slate-800 py-16 md:py-24">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
-      <h1 class="text-4xl md:text-5xl font-heading font-extrabold text-slate-900 dark:text-white mb-4">The Zenix Blog</h1>
+      <h1 class="text-4xl md:text-5xl font-heading font-extrabold text-slate-900 dark:text-white mb-4">Ryan Dudley Blog</h1>
       <p class="text-xl text-slate-600 dark:text-slate-400">
-        Insights, updates, and resources for SaaS founders and indie hackers.
+        Notes, updates, and practical writing from Ryan Dudley.
       </p>
     </div>
   </div>

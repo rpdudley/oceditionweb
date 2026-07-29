@@ -19,7 +19,7 @@ const { Content, headings } = await render(entry);
 
 // Resolve the author reference
 const author = await getEntry(entry.data.author);
-const authorName = author?.data.name ?? 'Zenix Author';
+const authorName = author?.data.name ?? 'Ryan Dudley';
 const authorRole = author?.data.role ?? 'Contributor';
 const authorAvatar = author?.data.avatar;
 const authorInitials = authorName
